@@ -189,23 +189,25 @@ function verifyCleanConsumer() {
   );
 
   try {
-    const packOutput = execFileSync("npm", ["pack", "--json"], {
+    // Prefer plain `npm pack` over `--json`: npm 10/11/12 disagree on JSON shape
+    // (array vs object vs package-name map). The tarball name is always the last
+    // non-empty stdout line.
+    const packOutput = execFileSync("npm", ["pack"], {
       cwd: packageRoot,
       encoding: "utf-8",
     });
-    // npm 10 returns an array; some npm 11+ builds return a single object.
-    // Also strip any non-JSON noise that may precede the payload.
-    const starts = [packOutput.indexOf("["), packOutput.indexOf("{")].filter(
-      (index) => index !== -1
-    );
-    assert(starts.length > 0, "npm pack --json produced no JSON payload");
-    const parsed = JSON.parse(packOutput.slice(Math.min(...starts)));
-    const packMeta = Array.isArray(parsed) ? parsed[0] : parsed;
+    let filename;
+    for (const line of packOutput.split(/\r?\n/u)) {
+      const trimmed = line.trim();
+      if (trimmed.length > 0) {
+        filename = trimmed;
+      }
+    }
     assert(
-      typeof packMeta?.filename === "string" && packMeta.filename.length > 0,
-      "npm pack --json missing filename"
+      typeof filename === "string" && filename.endsWith(".tgz"),
+      `npm pack did not emit a tarball name (got ${JSON.stringify(filename)})`
     );
-    const tarball = path.join(packageRoot, packMeta.filename);
+    const tarball = path.join(packageRoot, filename);
 
     writeFileSync(
       path.join(consumerDir, "package.json"),
