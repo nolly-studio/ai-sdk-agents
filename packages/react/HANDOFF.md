@@ -18,7 +18,7 @@ primitives, modeled on the shadcn monorepo / registry style.
    pnpm workspaces, turborepo (or equivalent), not a single flat package dump.
 3. Expose installable artifacts via a **shadcn registry** (registry JSON that
    `npx shadcn@latest add …` can consume), in addition to (or staged toward) the
-   npm package `@ai-sdk-agents/react`.
+   npm package `@aisdkagents/react`.
 4. Integrate the already-built DataStreamController primitive the human copies in
    from a private catalog monorepo. Do not invent a second stream controller API.
 5. Keep this repo free of paid Pattern / pro-block application source from the
@@ -28,15 +28,15 @@ primitives, modeled on the shadcn monorepo / registry style.
 
 The product catalog monorepo (private) must stay fully private. Publishing
 primitives from that repo risks leaking paid source and couples npm to a private
-tree. This public repo is the home for `@ai-sdk-agents/*` and the public registry.
+tree. This public repo is the home for `@aisdkagents/*` and the public registry.
 
 ## Package / naming
 
 | Item | Value |
 |------|--------|
 | Repo | `nolly-studio/ai-sdk-agents` |
-| npm scope | `@ai-sdk-agents` |
-| First package | `@ai-sdk-agents/react` |
+| npm scope | `@aisdkagents` |
+| First package | `@aisdkagents/react` |
 | First primitive | DataStreamController (observer/controller) |
 | Unscoped `ai-sdk-agents` on npm | TAKEN — do not use unscoped |
 | Midday `@ai-sdk-tools/*` | UNRELATED — do not collide or impersonate |
@@ -93,7 +93,7 @@ ai-sdk-agents/
   apps/
     www/                 # docs + registry site (or v4-style app)
   packages/
-    react/               # @ai-sdk-agents/react (copied primitive)
+    react/               # @aisdkagents/react (copied primitive)
     # later: more packages if needed
   registry/              # registry item sources OR generated from packages
   pnpm-workspace.yaml
@@ -105,7 +105,7 @@ ai-sdk-agents/
 Requirements for the registry side:
 
 - Follow shadcn registry conventions: items with name, type, files, dependencies, registryDependencies as needed.
-- Prefer distributing **source** via registry (shadcn model) while still keeping a proper buildable `@ai-sdk-agents/react` package for npm consumers.
+- Prefer distributing **source** via registry (shadcn model) while still keeping a proper buildable `@aisdkagents/react` package for npm consumers.
 - Decide explicitly and document: A) registry items wrap/install the npm package, or B) registry items ship the headless source files directly, or C) both (npm for apps that want a dependency; registry for copy-in ownership). Default recommendation: **C** — npm package is canonical behavior; registry offers a styled or composition example that depends on / documents the package.
 - Do not put private pro-block Pattern apps into this registry.
 
@@ -151,12 +151,12 @@ You should re-home that work, make CI green in the new repo, wire registry + doc
 - Private catalog Pattern migration (`agent-text-artifact`, etc.)
 - Eve agents, Stripe, entitlements, pro-registry auth
 - ArtifactSession / DocumentVersionController / HITL controllers (future packages)
-- Renaming away from `@ai-sdk-agents/react` without human approval
+- Renaming away from `@aisdkagents/react` without human approval
 
 ## Definition of done
 
 - [ ] Public monorepo boots with pnpm
-- [ ] `@ai-sdk-agents/react` typechecks, tests, builds
+- [ ] `@aisdkagents/react` typechecks, tests, builds
 - [ ] `"use client"` present on built public entries
 - [ ] `verify:publish` passes
 - [ ] At least one shadcn registry item builds and is documented

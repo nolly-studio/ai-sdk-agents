@@ -1,4 +1,4 @@
-# `@ai-sdk-agents/react`
+# `@aisdkagents/react`
 
 Headless React primitives for AI SDK agent UIs.
 
@@ -11,7 +11,7 @@ Published. First primitive: **DataStreamController** (frozen v1).
 ## Install
 
 ```bash
-pnpm add @ai-sdk-agents/react
+pnpm add @aisdkagents/react
 ```
 
 Composition example via shadcn registry (depends on this package):
@@ -29,7 +29,7 @@ npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller-demo
 ## Quick start
 
 ```tsx
-import { DataStreamController } from "@ai-sdk-agents/react";
+import { DataStreamController } from "@aisdkagents/react";
 
 function App() {
   return (
@@ -54,16 +54,16 @@ function ChatIngress() {
 ## Development
 
 ```bash
-pnpm --filter @ai-sdk-agents/react typecheck
-pnpm --filter @ai-sdk-agents/react test
-pnpm --filter @ai-sdk-agents/react build
-pnpm --filter @ai-sdk-agents/react verify:publish
+pnpm --filter @aisdkagents/react typecheck
+pnpm --filter @aisdkagents/react test
+pnpm --filter @aisdkagents/react build
+pnpm --filter @aisdkagents/react verify:publish
 ```
 
 See [`PUBLISH.md`](./PUBLISH.md) for the release checklist.
 
 ## Scope
 
-Package name `@ai-sdk-agents/react` matches the AISDK Agents product. The unscoped npm name `ai-sdk-agents` is taken.
+Package name `@aisdkagents/react` matches the AISDK Agents product. The unscoped npm name `ai-sdk-agents` is taken.
 
 Not the same as Midday’s `@ai-sdk-tools/*` packages.

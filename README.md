@@ -5,21 +5,21 @@ Public monorepo for **headless React primitives** and a **shadcn registry** for 
 | Item | Value |
 | --- | --- |
 | GitHub | [`nolly-studio/ai-sdk-agents`](https://github.com/nolly-studio/ai-sdk-agents) |
-| npm scope | `@ai-sdk-agents` |
-| First package | `@ai-sdk-agents/react` |
+| npm scope | `@aisdkagents` |
+| First package | `@aisdkagents/react` |
 | First primitive | DataStreamController |
 
-This is **not** Midday’s `@ai-sdk-tools/*`. The unscoped npm name `ai-sdk-agents` is taken — use the scoped packages only.
+This is **not** Midday’s `@ai-sdk-tools/*`. The unscoped npm name `ai-sdk-agents` is taken (and blocks the `@ai-sdk-agents` org), so packages publish under `@aisdkagents/*`.
 
 ## Why this repo exists
 
-The product catalog (Patterns / pro blocks) stays in a **private** monorepo. Publishing primitives from that tree risks leaking paid source. This public repo is the home for `@ai-sdk-agents/*` and the public registry. The private catalog will consume the published package later.
+The product catalog (Patterns / pro blocks) stays in a **private** monorepo. Publishing primitives from that tree risks leaking paid source. This public repo is the home for `@aisdkagents/*` and the public registry. The private catalog will consume the published package later.
 
 ## npm vs registry
 
 | Path | What you get |
 | --- | --- |
-| **npm** `@ai-sdk-agents/react` | Canonical headless behavior (Root / Handler / hooks). Prefer this for apps. |
+| **npm** `@aisdkagents/react` | Canonical headless behavior (Root / Handler / hooks). Prefer this for apps. |
 | **shadcn registry** | Composition / docs examples that depend on the npm package (model **C**). Copy-in ownership of the demo, not a second controller API. |
 
 Do not put private Pattern apps in this registry.
@@ -27,10 +27,10 @@ Do not put private Pattern apps in this registry.
 ### Install (npm)
 
 ```bash
-pnpm add @ai-sdk-agents/react
+pnpm add @aisdkagents/react
 ```
 
-Current release: `@ai-sdk-agents/react@0.1.0` (DataStreamController).
+Current release: `@aisdkagents/react@0.1.0` (DataStreamController).
 
 ### Install (registry)
 
@@ -52,7 +52,7 @@ Or, once the GitHub repo is public, follow [shadcn GitHub registries](https://ui
 
 ```text
 apps/web/                 # docs + registry host (public/r)
-packages/react/           # @ai-sdk-agents/react
+packages/react/           # @aisdkagents/react
 packages/ui/              # shared UI for the docs app
 registry/                 # registry item sources
 registry.json             # shadcn registry entrypoint
@@ -77,10 +77,10 @@ Lint/format: [Ultracite](https://www.ultracite.ai/) with Oxlint + Oxfmt (`pnpm c
 Package-scoped:
 
 ```bash
-pnpm --filter @ai-sdk-agents/react typecheck
-pnpm --filter @ai-sdk-agents/react test
-pnpm --filter @ai-sdk-agents/react build
-pnpm --filter @ai-sdk-agents/react verify:publish
+pnpm --filter @aisdkagents/react typecheck
+pnpm --filter @aisdkagents/react test
+pnpm --filter @aisdkagents/react build
+pnpm --filter @aisdkagents/react verify:publish
 ```
 
 ## DataStreamController

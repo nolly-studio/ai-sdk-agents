@@ -20,7 +20,7 @@ export default function DataStreamControllerDocsPage() {
           Headless observer/controller that FIFO-buffers AI SDK{" "}
           <code className="font-mono text-xs">data-*</code> parts and delivers
           them to one sink. Behavior package:{" "}
-          <code className="font-mono text-xs">@ai-sdk-agents/react</code>.
+          <code className="font-mono text-xs">@aisdkagents/react</code>.
         </p>
       </div>
 
@@ -87,7 +87,7 @@ export default function DataStreamControllerDocsPage() {
             behavior):
           </p>
           <pre className="bg-muted overflow-x-auto rounded-md p-3 font-mono text-xs">
-            pnpm add @ai-sdk-agents/react
+            pnpm add @aisdkagents/react
           </pre>
           <p className="text-muted-foreground">
             <strong className="text-foreground">Registry</strong> (composition

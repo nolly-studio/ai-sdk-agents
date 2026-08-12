@@ -2,7 +2,7 @@
 
 This repo uses **model C**:
 
-- **npm** `@ai-sdk-agents/react` — canonical headless behavior
+- **npm** `@aisdkagents/react` — canonical headless behavior
 - **shadcn registry** — composition examples that depend on the npm package
 
 ## Build
@@ -17,7 +17,7 @@ Writes JSON to `apps/web/public/r/` (including `registry.json` and per-item file
 
 | Name | Type | Notes |
 | --- | --- | --- |
-| `data-stream-controller-demo` | `registry:component` | Root + Handler + useController demo; depends on `@ai-sdk-agents/react` + shadcn `button` |
+| `data-stream-controller-demo` | `registry:component` | Root + Handler + useController demo; depends on `@aisdkagents/react` + shadcn `button` |
 
 ## Install
 
@@ -30,7 +30,7 @@ npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller-demo
 Registry items depend on the published npm package:
 
 ```bash
-pnpm add @ai-sdk-agents/react
+pnpm add @aisdkagents/react
 ```
 
 Do **not** add private Pattern / pro-block sources here.

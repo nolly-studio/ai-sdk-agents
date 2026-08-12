@@ -1,6 +1,6 @@
 "use client";
 
-import { DataStreamController } from "@ai-sdk-agents/react";
+import { DataStreamController } from "@aisdkagents/react";
 import { useCallback, useState } from "react";
 
 import { Button } from "@/components/ui/button";

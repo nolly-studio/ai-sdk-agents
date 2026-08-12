@@ -1,8 +1,8 @@
-# Publish checklist — `@ai-sdk-agents/react`
+# Publish checklist — `@aisdkagents/react`
 
 ## Metadata
 
-- [x] Package name: `@ai-sdk-agents/react`
+- [x] Package name: `@aisdkagents/react`
 - [x] `"type": "module"`
 - [x] `"sideEffects": false`
 - [x] `files` publishes `dist` + `README.md` (not `src`, fixtures, or tests)
@@ -14,7 +14,7 @@
 
 ## Build artifact
 
-- [x] `pnpm --filter @ai-sdk-agents/react build` emits JS + `.d.ts`
+- [x] `pnpm --filter @aisdkagents/react build` emits JS + `.d.ts`
 - [x] Fixtures/tests excluded from `dist`
 - [x] `"use client"` restored on public entries after tsup via `scripts/ensure-use-client.mjs`
 - [x] Private seams not re-exported (`createDataStreamStore`, `deliverBatch`)
@@ -22,24 +22,25 @@
 ## Verification commands
 
 ```bash
-pnpm --filter @ai-sdk-agents/react typecheck
-pnpm --filter @ai-sdk-agents/react test
-pnpm --filter @ai-sdk-agents/react build
-pnpm --filter @ai-sdk-agents/react verify:publish
+pnpm --filter @aisdkagents/react typecheck
+pnpm --filter @aisdkagents/react test
+pnpm --filter @aisdkagents/react build
+pnpm --filter @aisdkagents/react verify:publish
 ```
 
 ## M6 — first public release
 
 ```bash
-pnpm --filter @ai-sdk-agents/react publish --access public
+pnpm --filter @aisdkagents/react publish --access public
 ```
 
 Requires:
 
-1. npm login with permission to publish under `@ai-sdk-agents`
-2. npm org `ai-sdk-agents` (create at https://www.npmjs.com/org/create if needed)
-3. Green `prepublishOnly` gate (typecheck, test, build, verify:publish)
+1. npm login as `aisdkagents` (user scope — no separate org required)
+2. Green `prepublishOnly` gate (typecheck, test, build, verify:publish)
+
+Note: npm org `ai-sdk-agents` is unavailable (unscoped package name taken). Scope is `@aisdkagents` to match the npm user.
 
 ## Later releases
 
-Bump version intentionally, then publish again. Prefer Changesets once multiple `@ai-sdk-agents/*` packages exist.
+Bump version intentionally, then publish again. Prefer Changesets once multiple `@aisdkagents/*` packages exist.

@@ -7,8 +7,8 @@
       "name": "data-stream-controller-demo",
       "type": "registry:component",
       "title": "DataStreamController Demo",
-      "description": "Composition example for the headless DataStreamController from @ai-sdk-agents/react. Root + Handler + useAppend + onPart sink.",
-      "dependencies": ["@ai-sdk-agents/react"],
+      "description": "Composition example for the headless DataStreamController from @aisdkagents/react. Root + Handler + useAppend + onPart sink.",
+      "dependencies": ["@aisdkagents/react"],
       "registryDependencies": ["button"],
       "files": [
         {
@@ -17,7 +17,7 @@
           "target": "@components/ai-sdk-agents/data-stream-controller-demo.tsx"
         }
       ],
-      "docs": "Installs a composition example. Behavior lives in @ai-sdk-agents/react (npm). Keep private: true / unpublished until M6 is approved. ArtifactSession / common artifact deltas are out of scope for this controller."
+      "docs": "Installs a composition example. Behavior lives in @aisdkagents/react (npm). ArtifactSession / common artifact deltas are out of scope for this controller."
     }
   ]
 }

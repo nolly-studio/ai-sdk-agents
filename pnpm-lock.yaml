@@ -32,7 +32,7 @@ importers:
 
   apps/web:
     dependencies:
-      '@ai-sdk-agents/react':
+      '@aisdkagents/react':
         specifier: workspace:*
         version: link:../../packages/react
       '@workspace/ui':

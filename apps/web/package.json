@@ -10,7 +10,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@ai-sdk-agents/react": "workspace:*",
+    "@aisdkagents/react": "workspace:*",
     "@workspace/ui": "workspace:*",
     "lucide-react": "^1.31.0",
     "next": "16.2.6",

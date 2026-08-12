@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * M5 publish-prep verification for @ai-sdk-agents/react.
+ * M5 publish-prep verification for @aisdkagents/react.
  *
  * Checks:
  * 1. Expected dist entries exist
@@ -183,7 +183,7 @@ function verifyCleanConsumer() {
       JSON.stringify(
         {
           dependencies: {
-            "@ai-sdk-agents/react": `file:${tarball}`,
+            "@aisdkagents/react": `file:${tarball}`,
             react: "^19.0.0",
           },
           name: "clean-consumer",
@@ -209,8 +209,8 @@ import {
   DataStreamControllerHandler,
   DataStreamControllerRoot,
   useDataStreamAppend,
-} from "@ai-sdk-agents/react";
-import * as subpath from "@ai-sdk-agents/react/data-stream-controller";
+} from "@aisdkagents/react";
+import * as subpath from "@aisdkagents/react/data-stream-controller";
 
 if (typeof DataStreamController.Root !== "function") {
   throw new Error("DataStreamController.Root missing");

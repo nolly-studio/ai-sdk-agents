@@ -1,4 +1,4 @@
-# @ai-sdk-agents/react
+# @aisdkagents/react
 
 ## 0.1.0
 

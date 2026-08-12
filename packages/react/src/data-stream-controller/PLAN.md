@@ -1,6 +1,6 @@
 # DataStreamController — Plan
 
-> **Plan status:** Interface frozen. M1–M6 complete (`@ai-sdk-agents/react@0.1.0`). Next: M7 Pattern migration in the private catalog.
+> **Plan status:** Interface frozen. M1–M6 complete (`@aisdkagents/react@0.1.0`). Next: M7 Pattern migration in the private catalog.
 
 ## Why this primitive
 
@@ -207,7 +207,7 @@ data-stream-controller/
 
 ### M6 — Release package
 
-- Confirm `@ai-sdk-agents/react` is still available and package metadata points at the intended repository.
+- Confirm `@aisdkagents/react` is still available and package metadata points at the intended repository.
 - Remove `private: true`, create the release artifact, and verify the exact npm version resolves from a clean consumer.
 - Exit: a pinned, installable npm version exists. Publishing is a separate maintainer-approved action, not implied by this implementation plan.
 
@@ -257,7 +257,7 @@ import type { DataUIPart } from "ai";
 import {
   DataStreamController,
   type DataStreamPartHandler,
-} from "@ai-sdk-agents/react";
+} from "@aisdkagents/react";
 
 type AgentDataPart = DataUIPart<AgentTextDataParts>;
 
@@ -289,9 +289,9 @@ The first registry migration intentionally keeps the Pattern-local artifact redu
 
 | Item | Decision |
 | --- | --- |
-| Package | `@ai-sdk-agents/react` |
+| Package | `@aisdkagents/react` |
 | Workspace path | `packages/react` |
-| Public subpath | `@ai-sdk-agents/react/data-stream-controller` |
+| Public subpath | `@aisdkagents/react/data-stream-controller` |
 | React | Peer dependency; v1 implementation targets React 19 |
 | AI SDK | Structural public part type; no peer/runtime dependency in v1; `ai` dev dependency for type tests |
 | Publish state | Public as of `0.1.0` (M6) |
@@ -332,6 +332,6 @@ Any of those changes the queue or ownership model and requires revisiting `INTER
 - [x] React Root, hooks, Handler + DOM tests (M3)
 - [x] Internal consumer dogfood (M4)
 - [x] Publish preparation (M5): dist build, `"use client"`, clean-consumer verify
-- [x] Approved npm release (M6): `@ai-sdk-agents/react@0.1.0`
+- [x] Approved npm release (M6): `@aisdkagents/react@0.1.0`
 - [ ] First registry Pattern migration (M7)
 - [ ] Separate ArtifactSession plan and adapter

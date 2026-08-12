@@ -8,7 +8,7 @@ export default function Page() {
         <p className="text-muted-foreground text-sm leading-relaxed">
           Public headless React primitives and shadcn registry for AI SDK agent
           UIs. Canonical package:{" "}
-          <code className="font-mono text-xs">@ai-sdk-agents/react</code>.
+          <code className="font-mono text-xs">@aisdkagents/react</code>.
         </p>
       </div>
 
@@ -37,9 +37,7 @@ export default function Page() {
         </p>
         <p>
           Install:{" "}
-          <code className="font-mono text-xs">
-            pnpm add @ai-sdk-agents/react
-          </code>{" "}
+          <code className="font-mono text-xs">pnpm add @aisdkagents/react</code>{" "}
           (current: <code className="font-mono text-xs">0.1.0</code>).
         </p>
       </section>

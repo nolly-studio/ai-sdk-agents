@@ -178,7 +178,7 @@ import type { DataUIPart } from "ai";
 import {
   DataStreamController,
   type DataStreamPartHandler,
-} from "@ai-sdk-agents/react";
+} from "@aisdkagents/react";
 
 type AgentDataParts = {
   id: string;
