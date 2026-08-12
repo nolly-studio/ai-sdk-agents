@@ -2,7 +2,9 @@ import { defineConfig } from "tsup";
 
 export default defineConfig({
   entry: {
+    "artifact-session/index": "src/artifact-session/index.ts",
     "data-stream-controller/index": "src/data-stream-controller/index.ts",
+    "prompt-input/index": "src/prompt-input/index.ts",
     index: "src/index.ts",
   },
   format: ["esm"],

@@ -40,5 +40,16 @@ export default defineConfig({
     // AI SDK `UIDataTypes` and several public unions need `type` aliases.
     "typescript/consistent-type-definitions": "off",
   },
-  overrides: vitestOverrides,
+  overrides: [
+    ...vitestOverrides,
+    {
+      files: ["apps/web/components/ui/**/*.{ts,tsx}"],
+      rules: {
+        // Generated / vendor-shaped shadcn primitives.
+        "jsx-a11y/prefer-tag-over-role": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-noninteractive-element-interactions": "off",
+      },
+    },
+  ],
 });

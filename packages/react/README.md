@@ -6,7 +6,7 @@ This package owns **behavior** (stream bridging, and later artifact sessions / H
 
 ## Status
 
-Published. First primitive: **DataStreamController** (frozen v1).
+Published. Primitives: **DataStreamController**, **ArtifactSession** (frozen v1).
 
 ## Install
 
@@ -25,6 +25,7 @@ npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller-demo
 | Primitive | Archetype | Path | Status |
 | --- | --- | --- | --- |
 | DataStreamController | observer / controller | [`src/data-stream-controller`](./src/data-stream-controller) | v0.1.0 |
+| ArtifactSession | observer / controller | [`src/artifact-session`](./src/artifact-session) | v0.1.0 |
 
 ## Quick start
 

@@ -51,10 +51,11 @@ Or, once the GitHub repo is public, follow [shadcn GitHub registries](https://ui
 ## Monorepo layout
 
 ```text
-apps/web/                 # docs + registry host (public/r)
+apps/web/                 # Fumadocs site + registry host (public/r)
+  content/docs/           # MDX documentation
+  registry/               # registry item sources
 packages/react/           # @aisdkagents/react
-packages/ui/              # shared UI for the docs app
-registry/                 # registry item sources
+packages/typescript-config/ # shared TSConfig presets
 registry.json             # shadcn registry entrypoint
 ```
 
@@ -71,6 +72,8 @@ pnpm verify:publish
 pnpm registry:build
 pnpm --filter web dev
 ```
+
+Docs are powered by [Fumadocs](https://www.fumadocs.dev/) (`apps/web/content/docs`). Registry sources live in `apps/web/registry/`; built JSON lands in `apps/web/public/r/`.
 
 Lint/format: [Ultracite](https://www.ultracite.ai/) with Oxlint + Oxfmt (`pnpm check` / `pnpm fix`). Husky runs fix on pre-commit.
 

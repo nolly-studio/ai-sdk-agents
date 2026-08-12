@@ -1,0 +1,41 @@
+---
+title: Introduction
+description: Headless React primitives and a shadcn registry for AI SDK agent UIs.
+icon: BookOpen
+---
+
+## What this is
+
+Public docs for **`@aisdkagents/react`** — headless behavior primitives for AI SDK agent interfaces — plus a **shadcn registry** for composition examples.
+
+Paid Pattern / pro-block application source stays in the private catalog. This site is primitives + docs + public registry examples only.
+
+## Install
+
+```bash
+pnpm add @aisdkagents/react
+```
+
+## Primitives
+
+<Cards>
+  <Card
+    title="DataStreamController"
+    description="FIFO buffer and ordered delivery of AI SDK data-* parts to one onPart sink."
+    href="/docs/data-stream-controller"
+  />
+  <Card
+    title="Registry"
+    description="Install composition examples with npx shadcn@latest add."
+    href="/docs/registry"
+  />
+</Cards>
+
+## npm vs registry
+
+| Path | What you get |
+| --- | --- |
+| **npm** `@aisdkagents/react` | Canonical headless behavior |
+| **shadcn registry** | Copy-in composition examples that depend on the package |
+
+See [Registry](/docs/registry) for CLI install details.

@@ -35,9 +35,10 @@ The controller is transport behavior, not an artifact reducer. `data-id`, `data-
 
 | Out of scope | Owner |
 | --- | --- |
-| Artifact fields, status, visibility, metadata, and reset values | Future `ArtifactSession` / consumer |
-| Recognition or application of common artifact deltas | Future `ArtifactSession` stream adapter |
-| Kind lookup and kind-specific delta interpretation | Kind registry / consumer |
+| Artifact document fields and `streamPhase` | `ArtifactSession` |
+| Visibility, versions, metadata, and panel chrome | App / future panel or version controllers |
+| Recognition or application of common artifact deltas | `ArtifactSession` (`Stream` wraps Handler) |
+| Kind-specific clear / delta interpretation | `ArtifactSession` kind adapter |
 | Document versions and persistence | `DocumentVersionController` / app |
 | Multiple independent consumers of one queue | A future broadcast controller, or separate Roots |
 | Async handlers, acknowledgements, durable retry, exactly-once effects | App-level queue / future protocol |
@@ -262,15 +263,14 @@ The future adapter (working anatomy: `ArtifactSession.Stream`) composes the cont
 </DataStreamController.Root>
 ```
 
-`ArtifactSession.Stream` may render a DataStreamController Handler internally and own all of the following:
+`ArtifactSession.Stream` mounts a DataStreamController Handler internally and owns:
 
 - recognition and application of `data-id/title/kind/clear/finish`;
 - the artifact's initial state and kind-specific clear/reset value;
-- lookup and invocation of a kind definition's stream handler;
-- session status, visibility, metadata, and reducer ordering;
-- any idempotency or retry strategy appropriate to session mutations.
+- one kind adapter's `reducePart` for kind deltas;
+- document fields (`documentId`, `title`, `kind`, `content`) and core-owned `streamPhase`.
 
-This boundary is required by current evidence: most artifact Patterns interpret `data-clear` as `content: ""`, while the canvas Pattern resets to `EMPTY_WHITEBOARD_JSON`. The transport cannot supply a correct universal mutation.
+Visibility, versions, metadata, and panel chrome stay outside ArtifactSession v1 (and outside this controller). This boundary is required by current evidence: most artifact Patterns interpret `data-clear` as `content: ""`, while the canvas Pattern resets to `EMPTY_WHITEBOARD_JSON`. The transport cannot supply a correct universal mutation.
 
 ## Multi-sink policy
 

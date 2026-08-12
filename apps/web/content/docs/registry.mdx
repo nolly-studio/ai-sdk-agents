@@ -1,0 +1,38 @@
+---
+title: Registry
+description: Install composition examples with the shadcn CLI.
+icon: Package
+---
+
+This repo uses **model C**:
+
+- **npm** `@aisdkagents/react` — canonical headless behavior
+- **shadcn registry** — composition examples that depend on the npm package
+
+## Build locally
+
+From the monorepo root:
+
+```bash
+pnpm registry:build
+```
+
+Sources live in `apps/web/registry/`. JSON is written to `apps/web/public/r/`.
+
+## Install an item
+
+After the docs site is deployed (or any host serving `public/r`):
+
+```bash
+npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller-demo.json
+```
+
+Or, once the GitHub repo is public, follow [shadcn GitHub registries](https://ui.shadcn.com/docs/registry/github) using this repo’s root `registry.json`.
+
+## Items
+
+| Name | Type | Notes |
+| --- | --- | --- |
+| `data-stream-controller-demo` | `registry:component` | Root + Handler + useController demo; depends on `@aisdkagents/react` + shadcn `button` |
+
+Do **not** put private Pattern / pro-block sources in this registry.

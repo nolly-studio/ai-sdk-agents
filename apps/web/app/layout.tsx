@@ -1,9 +1,10 @@
-import { cn } from "@workspace/ui/lib/utils";
-
-import "@workspace/ui/globals.css";
+import { RootProvider } from "fumadocs-ui/provider/next";
 import { Geist_Mono, Inter } from "next/font/google";
+import type { ReactNode } from "react";
 
-import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
+
+import "./global.css";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -12,24 +13,15 @@ const fontMono = Geist_Mono({
   variable: "--font-mono",
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn(
-        "antialiased",
-        fontMono.variable,
-        "font-sans",
-        inter.variable
-      )}
+      className={cn(inter.variable, fontMono.variable, "font-sans antialiased")}
     >
-      <body>
-        <ThemeProvider>{children}</ThemeProvider>
+      <body className="flex min-h-screen flex-col">
+        <RootProvider>{children}</RootProvider>
       </body>
     </html>
   );

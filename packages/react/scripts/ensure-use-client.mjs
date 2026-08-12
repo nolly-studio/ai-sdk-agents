@@ -10,7 +10,12 @@ import path from "node:path";
 const __dirname = import.meta.dirname;
 const distRoot = path.resolve(__dirname, "../dist");
 
-const ENTRIES = ["index.js", "data-stream-controller/index.js"];
+const ENTRIES = [
+  "index.js",
+  "artifact-session/index.js",
+  "data-stream-controller/index.js",
+  "prompt-input/index.js",
+];
 const DIRECTIVE = '"use client";\n';
 
 for (const relativePath of ENTRIES) {

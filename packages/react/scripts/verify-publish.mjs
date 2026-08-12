@@ -28,15 +28,23 @@ const packageRoot = path.resolve(__dirname, "..");
 const distRoot = path.join(packageRoot, "dist");
 const require = createRequire(import.meta.url);
 
-const CLIENT_ENTRIES = ["index.js", "data-stream-controller/index.js"];
+const CLIENT_ENTRIES = [
+  "index.js",
+  "artifact-session/index.js",
+  "data-stream-controller/index.js",
+  "prompt-input/index.js",
+];
 
 const REQUIRED_DIST_FILES = [
   ...CLIENT_ENTRIES,
   "index.d.ts",
+  "artifact-session/index.d.ts",
   "data-stream-controller/index.d.ts",
+  "prompt-input/index.d.ts",
 ];
 
 const PUBLIC_EXPORT_ALLOWLIST = new Set([
+  "createArtifactSession",
   "DataStreamController",
   "DataStreamControllerHandler",
   "DataStreamControllerRoot",
@@ -122,6 +130,10 @@ async function verifyExportAllowlist() {
     !("createDataStreamStore" in mod),
     "createDataStreamStore must remain private"
   );
+  assert(
+    !("createArtifactSessionStore" in mod),
+    "createArtifactSessionStore must remain private"
+  );
   assert(!("deliverBatch" in mod), "deliverBatch must remain private");
   assert(!("getCommonDeltaType" in mod), "getCommonDeltaType must not return");
 }
@@ -157,12 +169,18 @@ function verifyPackageMetadata() {
       rootExport?.default?.startsWith("./dist/"),
     "root export must point at dist"
   );
-  const subpath = pkg.exports?.["./data-stream-controller"];
-  assert(
-    subpath?.types?.startsWith("./dist/") &&
-      subpath?.default?.startsWith("./dist/"),
-    "subpath export must point at dist"
-  );
+  for (const key of [
+    "./artifact-session",
+    "./data-stream-controller",
+    "./prompt-input",
+  ]) {
+    const subpath = pkg.exports?.[key];
+    assert(
+      subpath?.types?.startsWith("./dist/") &&
+        subpath?.default?.startsWith("./dist/"),
+      `${key} export must point at dist`
+    );
+  }
 }
 
 function verifyCleanConsumer() {
@@ -205,12 +223,15 @@ function verifyCleanConsumer() {
       path.join(consumerDir, "smoke.mjs"),
       `
 import {
+  createArtifactSession,
   DataStreamController,
   DataStreamControllerHandler,
   DataStreamControllerRoot,
   useDataStreamAppend,
 } from "@aisdkagents/react";
+import * as artifactSession from "@aisdkagents/react/artifact-session";
 import * as subpath from "@aisdkagents/react/data-stream-controller";
+import * as promptInput from "@aisdkagents/react/prompt-input";
 
 if (typeof DataStreamController.Root !== "function") {
   throw new Error("DataStreamController.Root missing");
@@ -224,8 +245,20 @@ if (typeof DataStreamControllerRoot !== "function") {
 if (typeof useDataStreamAppend !== "function") {
   throw new Error("useDataStreamAppend missing");
 }
+if (typeof createArtifactSession !== "function") {
+  throw new Error("createArtifactSession missing");
+}
+if (typeof artifactSession.createArtifactSession !== "function") {
+  throw new Error("artifact-session subpath missing");
+}
 if (typeof subpath.DataStreamController.Handler !== "function") {
   throw new Error("subpath Handler missing");
+}
+if (typeof promptInput.PromptInput.Root !== "function") {
+  throw new Error("prompt-input PromptInput.Root missing");
+}
+if (typeof promptInput.usePromptInputContext !== "function") {
+  throw new Error("prompt-input usePromptInputContext missing");
 }
 
 console.log("clean-consumer ok");

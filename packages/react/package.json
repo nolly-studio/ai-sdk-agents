@@ -30,9 +30,17 @@
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
     },
+    "./artifact-session": {
+      "types": "./dist/artifact-session/index.d.ts",
+      "default": "./dist/artifact-session/index.js"
+    },
     "./data-stream-controller": {
       "types": "./dist/data-stream-controller/index.d.ts",
       "default": "./dist/data-stream-controller/index.js"
+    },
+    "./prompt-input": {
+      "types": "./dist/prompt-input/index.d.ts",
+      "default": "./dist/prompt-input/index.js"
     },
     "./package.json": "./package.json"
   },
@@ -52,6 +60,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "ai": "^5.0.0",
+    "iconv-lite": "0.7.3",
     "jsdom": "^26.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",

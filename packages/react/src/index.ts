@@ -1,6 +1,17 @@
 "use client";
 
 export {
+  createArtifactSession,
+  type ArtifactKindAdapter,
+  type ArtifactSessionController,
+  type ArtifactSessionNamespace,
+  type ArtifactSessionRootProps,
+  type ArtifactSessionState,
+  type ArtifactSessionStreamProps,
+  type ArtifactStreamPhase,
+} from "./artifact-session";
+
+export {
   DataStreamController,
   type DataStreamControllerApi,
   DataStreamControllerHandler,

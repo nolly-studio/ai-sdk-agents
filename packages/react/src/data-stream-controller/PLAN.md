@@ -132,15 +132,14 @@ DataStreamController Handler owns:
 - concurrent-append isolation;
 - failure observation and lifecycle cleanup.
 
-The future ArtifactSession adapter owns:
+The ArtifactSession adapter owns:
 
 - `id/title/kind/clear/finish` recognition and mutation;
 - initial state and reset representation;
-- kind definition lookup and kind-specific delta handling;
-- status, visibility, content, and metadata;
-- session-specific reducer order and retry/idempotency.
+- one kind adapter for kind-specific clear/delta handling;
+- document fields and core-owned `streamPhase` only (v1).
 
-The adapter should consume Handler (working anatomy: `ArtifactSession.Stream`) instead of adding setters or artifact flags to Handler.
+Visibility, versions, and metadata are deferred beyond ArtifactSession v1. The adapter consumes Handler via `ArtifactSession.Stream` instead of adding setters or artifact flags to Handler.
 
 ## Proposed implementation seams
 

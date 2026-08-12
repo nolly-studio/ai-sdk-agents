@@ -1,0 +1,61 @@
+---
+title: DataStreamController
+description: Headless observer/controller that FIFO-buffers AI SDK data-* parts and delivers them to one sink.
+icon: Radio
+---
+
+Behavior package: [`@aisdkagents/react`](https://www.npmjs.com/package/@aisdkagents/react).
+
+## Install
+
+```bash
+pnpm add @aisdkagents/react
+```
+
+Composition example via the registry (depends on the npm package):
+
+```bash
+npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller-demo.json
+```
+
+## Anatomy
+
+1. **Root** — owns one Root-lifetime FIFO store; append must not rerender the tree.
+2. **Handler** — sole drain owner. Receives `onPart({ part })` and optional `onError({ cause, part })`. Claim-before-dispatch, FIFO order.
+3. **useAppend** — stable `append` for `useChat({ onData })`. Use **useController** for `append` / `appendMany` / `clear`.
+4. **useStatus** — `pendingCount` / `hasPendingParts` only. No public drain, subscribe, or store.
+
+## Quick start
+
+```tsx
+import { DataStreamController } from "@aisdkagents/react";
+
+function App() {
+  return (
+    <DataStreamController.Root>
+      <DataStreamController.Handler
+        onPart={({ part }) => {
+          // sink
+        }}
+      />
+      <ChatIngress />
+    </DataStreamController.Root>
+  );
+}
+
+function ChatIngress() {
+  const append = DataStreamController.useAppend();
+  // useChat({ onData: append })
+  return null;
+}
+```
+
+## Live demo
+
+<DataStreamControllerDemo />
+
+## Out of scope
+
+Common artifact deltas (`data-id`, `data-title`, `data-kind`, `data-clear`, `data-finish`) are treated like every other part. A future **ArtifactSession** adapter owns applying that protocol — not this controller.
+
+Frozen contract: [`INTERFACE.md`](https://github.com/nolly-studio/ai-sdk-agents/blob/main/packages/react/src/data-stream-controller/INTERFACE.md) in the repo.

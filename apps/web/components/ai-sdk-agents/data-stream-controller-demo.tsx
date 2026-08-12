@@ -1,8 +1,9 @@
 "use client";
 
 import { DataStreamController } from "@aisdkagents/react";
-import { Button } from "@workspace/ui/components/button";
 import { useCallback, useState } from "react";
+
+import { Button } from "@/components/ui/button";
 
 interface DemoPart {
   type: "data-agent-text";

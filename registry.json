@@ -12,7 +12,7 @@
       "registryDependencies": ["button"],
       "files": [
         {
-          "path": "registry/data-stream-controller-demo/data-stream-controller-demo.tsx",
+          "path": "apps/web/registry/demos/data-stream-controller-demo.tsx",
           "type": "registry:component",
           "target": "@components/ai-sdk-agents/data-stream-controller-demo.tsx"
         }

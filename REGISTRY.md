@@ -1,5 +1,7 @@
 # Registry
 
+Docs UI is [Fumadocs](https://www.fumadocs.dev/) (`apps/web/content/docs`). Registry item sources live in `apps/web/registry/`; installable JSON builds to `apps/web/public/r/`.
+
 This repo uses **model C**:
 
 - **npm** `@aisdkagents/react` — canonical headless behavior
