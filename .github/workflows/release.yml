@@ -34,8 +34,11 @@ jobs:
           cache: pnpm
           registry-url: https://registry.npmjs.org
 
-      - name: Update npm for OIDC support
-        run: npm install -g npm@latest
+      # Pin to npm 11: Trusted Publishing needs >=11.5.1, but npm 12's
+      # `npm info --json` returns an array and breaks @changesets/cli publish
+      # planning (versions becomes undefined). Revisit when changesets supports npm 12.
+      - name: Install npm 11 for OIDC support
+        run: npm install -g npm@11
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
