@@ -17,7 +17,7 @@
     "registry:build": "pnpm dlx shadcn@latest build --output apps/web/public/r",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm build:packages && pnpm verify:publish && changeset publish",
+    "release": "pnpm --filter @aisdkagents/react typecheck && pnpm --filter @aisdkagents/react test && pnpm build:packages && pnpm verify:publish && changeset publish",
     "prepare": "husky"
   },
   "devDependencies": {

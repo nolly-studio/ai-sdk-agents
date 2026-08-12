@@ -54,7 +54,7 @@
     "test": "vitest run --config vitest.config.ts",
     "test:watch": "vitest --config vitest.config.ts",
     "verify:publish": "node ./scripts/verify-publish.mjs",
-    "prepublishOnly": "pnpm typecheck && pnpm test && pnpm build && pnpm verify:publish"
+    "prepublishOnly": "node ./scripts/verify-publish.mjs"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
