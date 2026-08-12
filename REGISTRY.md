@@ -27,6 +27,10 @@ After the docs app is deployed (or any host serving `public/r`):
 npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller-demo.json
 ```
 
-Until M6 publish approval, `@ai-sdk-agents/react` is not on npm — use a workspace / git dependency or wait for release. The registry item still documents the intended consumer dependency.
+Registry items depend on the published npm package:
+
+```bash
+pnpm add @ai-sdk-agents/react
+```
 
 Do **not** add private Pattern / pro-block sources here.

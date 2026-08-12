@@ -84,7 +84,7 @@ export default function DataStreamControllerDocsPage() {
         <div className="space-y-2 text-sm leading-relaxed">
           <p className="text-muted-foreground">
             <strong className="text-foreground">npm</strong> (canonical
-            behavior, after M6 publish approval):
+            behavior):
           </p>
           <pre className="bg-muted overflow-x-auto rounded-md p-3 font-mono text-xs">
             pnpm add @ai-sdk-agents/react

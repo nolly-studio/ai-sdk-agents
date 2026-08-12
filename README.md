@@ -24,13 +24,13 @@ The product catalog (Patterns / pro blocks) stays in a **private** monorepo. Pub
 
 Do not put private Pattern apps in this registry.
 
-### Install (npm) — after M6 publish approval
+### Install (npm)
 
 ```bash
 pnpm add @ai-sdk-agents/react
 ```
 
-The package is still `"private": true` / `0.0.0` until an explicit release OK.
+Current release: `@ai-sdk-agents/react@0.1.0` (DataStreamController).
 
 ### Install (registry)
 

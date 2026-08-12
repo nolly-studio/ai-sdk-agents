@@ -1,7 +1,5 @@
 # Publish checklist — `@ai-sdk-agents/react`
 
-M5 exit criteria. Keep `private: true` until M6 is explicitly approved.
-
 ## Metadata
 
 - [x] Package name: `@ai-sdk-agents/react`
@@ -11,15 +9,14 @@ M5 exit criteria. Keep `private: true` until M6 is explicitly approved.
 - [x] React `^19` peer dependency
 - [x] No `ai` peer/runtime dependency (structural types; `ai` is a devDependency)
 - [x] Root + `./data-stream-controller` exports point at `dist`
-- [x] `private: true` until M6
+- [x] `publishConfig.access`: `public`
+- [x] M6: `private` removed; version `0.1.0`
 
 ## Build artifact
 
 - [x] `pnpm --filter @ai-sdk-agents/react build` emits JS + `.d.ts`
 - [x] Fixtures/tests excluded from `dist`
-- [x] `"use client"` restored on public entries after tsup via `scripts/ensure-use-client.mjs` (esbuild drops directives while bundling):
-  - `dist/index.js`
-  - `dist/data-stream-controller/index.js`
+- [x] `"use client"` restored on public entries after tsup via `scripts/ensure-use-client.mjs`
 - [x] Private seams not re-exported (`createDataStreamStore`, `deliverBatch`)
 
 ## Verification commands
@@ -31,11 +28,18 @@ pnpm --filter @ai-sdk-agents/react build
 pnpm --filter @ai-sdk-agents/react verify:publish
 ```
 
-`verify:publish` packs the package, installs it into a temporary clean consumer, and imports both the root and subpath entry.
+## M6 — first public release
 
-## M6 (separate approval)
+```bash
+pnpm --filter @ai-sdk-agents/react publish --access public
+```
 
-1. Confirm npm scope availability for `@ai-sdk-agents/react`
-2. Bump version from `0.0.0`
-3. Remove `private: true`
-4. Publish and pin the exact version before Pattern migration (M7)
+Requires:
+
+1. npm login with permission to publish under `@ai-sdk-agents`
+2. npm org `ai-sdk-agents` (create at https://www.npmjs.com/org/create if needed)
+3. Green `prepublishOnly` gate (typecheck, test, build, verify:publish)
+
+## Later releases
+
+Bump version intentionally, then publish again. Prefer Changesets once multiple `@ai-sdk-agents/*` packages exist.

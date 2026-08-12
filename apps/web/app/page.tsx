@@ -36,9 +36,11 @@ export default function Page() {
           only.
         </p>
         <p>
-          <code className="font-mono text-xs">@ai-sdk-agents/react</code>{" "}
-          remains <code className="font-mono text-xs">private: true</code> until
-          an explicit M6 publish approval.
+          Install:{" "}
+          <code className="font-mono text-xs">
+            pnpm add @ai-sdk-agents/react
+          </code>{" "}
+          (current: <code className="font-mono text-xs">0.1.0</code>).
         </p>
       </section>
     </main>

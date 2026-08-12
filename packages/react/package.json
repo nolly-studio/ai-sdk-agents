@@ -1,7 +1,6 @@
 {
   "name": "@ai-sdk-agents/react",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "Headless React primitives for AI SDK agent UIs",
   "homepage": "https://github.com/nolly-studio/ai-sdk-agents#readme",
   "bugs": {
@@ -36,6 +35,10 @@
       "default": "./dist/data-stream-controller/index.js"
     },
     "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "build": "tsup --config tsup.config.ts && node ./scripts/ensure-use-client.mjs",

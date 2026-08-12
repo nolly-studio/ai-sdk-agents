@@ -138,7 +138,18 @@ function verifyPackageMetadata() {
   );
   assert(pkg.peerDependencies?.react, "react peerDependency required");
   assert(!pkg.peerDependencies?.ai, "ai must not be a peerDependency in v1");
-  assert(pkg.private === true, "keep private:true until explicit M6 release");
+  assert(
+    pkg.private !== true,
+    "package must not be private after M6 (ready to publish)"
+  );
+  assert(
+    pkg.publishConfig?.access === "public",
+    "publishConfig.access must be public for the scoped package"
+  );
+  assert(
+    typeof pkg.version === "string" && pkg.version !== "0.0.0",
+    "version must be bumped from 0.0.0 before publish"
+  );
 
   const rootExport = pkg.exports?.["."];
   assert(
