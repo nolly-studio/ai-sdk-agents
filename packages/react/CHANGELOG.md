@@ -1,5 +1,11 @@
 # @aisdkagents/react
 
+## 0.2.1
+
+### Patch Changes
+
+- [`56a7ad8`](https://github.com/nolly-studio/ai-sdk-agents/commit/56a7ad8ee5e5ec1106f81bb81b799c50460185e3) Thanks [@nolly-studio](https://github.com/nolly-studio)! - Enable tsup code splitting so DataStreamControllerContext is a single module across subpath entries (fixes Root/Stream context mismatch).
+
 ## 0.2.0
 
 ### Minor Changes
