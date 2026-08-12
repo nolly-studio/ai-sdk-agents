@@ -53,8 +53,7 @@
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "test": "vitest run --config vitest.config.ts",
     "test:watch": "vitest --config vitest.config.ts",
-    "verify:publish": "node ./scripts/verify-publish.mjs",
-    "prepublishOnly": "node ./scripts/verify-publish.mjs"
+    "verify:publish": "node ./scripts/verify-publish.mjs"
   },
   "devDependencies": {
     "@types/react": "^19.0.0",

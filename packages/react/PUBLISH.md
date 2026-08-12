@@ -37,7 +37,7 @@ pnpm --filter @aisdkagents/react publish --access public
 Requires:
 
 1. npm login as `aisdkagents` (user scope — no separate org required)
-2. Green `prepublishOnly` gate (typecheck, test, build, verify:publish)
+2. Green verification commands above (CI / `pnpm release` run these before publish)
 
 Note: npm org `ai-sdk-agents` is unavailable (unscoped package name taken). Scope is `@aisdkagents` to match the npm user.
 
