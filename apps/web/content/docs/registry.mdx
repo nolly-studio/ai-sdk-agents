@@ -1,13 +1,13 @@
 ---
 title: Registry
-description: Install composition examples with the shadcn CLI.
+description: Install skins and composition examples with the shadcn CLI.
 icon: Package
 ---
 
 This repo uses **model C**:
 
 - **npm** `@aisdkagents/react` — canonical headless behavior
-- **shadcn registry** — composition examples that depend on the npm package
+- **shadcn registry** — styled adapters + composition examples that depend on the npm package
 
 ## Build locally
 
@@ -25,6 +25,7 @@ After the docs site is deployed (or any host serving `public/r`):
 
 ```bash
 npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller-demo.json
+npx shadcn@latest add https://<your-deployed-host>/r/artifact-session-demo.json
 ```
 
 Or, once the GitHub repo is public, follow [shadcn GitHub registries](https://ui.shadcn.com/docs/registry/github) using this repo’s root `registry.json`.
@@ -33,6 +34,9 @@ Or, once the GitHub repo is public, follow [shadcn GitHub registries](https://ui
 
 | Name | Type | Notes |
 | --- | --- | --- |
-| `data-stream-controller-demo` | `registry:component` | Root + Handler + useController demo; depends on `@aisdkagents/react` + shadcn `button` |
+| `data-stream-controller` | `registry:ui` | Frame / Status / Log / Clear skin |
+| `artifact-session` | `registry:ui` | Panel skin via `createArtifactSessionSkin` |
+| `data-stream-controller-demo` | `registry:component` | Skin + Root / Handler composition |
+| `artifact-session-demo` | `registry:component` | Transport + session + panel composition |
 
 Do **not** put private Pattern / pro-block sources in this registry.

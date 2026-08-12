@@ -333,4 +333,5 @@ Any of those changes the queue or ownership model and requires revisiting `INTER
 - [x] Publish preparation (M5): dist build, `"use client"`, clean-consumer verify
 - [x] Approved npm release (M6): `@aisdkagents/react@0.1.0`
 - [ ] First registry Pattern migration (M7)
-- [ ] Separate ArtifactSession plan and adapter
+- [x] Separate ArtifactSession plan and adapter
+- [x] tsup `splitting: true` so DSC Context is one shared chunk across subpaths (mixing `./artifact-session` + `./data-stream-controller` with `splitting: false` duplicated `createContext` and broke Root/Stream composition)

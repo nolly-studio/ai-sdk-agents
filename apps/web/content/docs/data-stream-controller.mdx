@@ -12,10 +12,16 @@ Behavior package: [`@aisdkagents/react`](https://www.npmjs.com/package/@aisdkage
 pnpm add @aisdkagents/react
 ```
 
-Composition example via the registry (depends on the npm package):
+Styled chrome + composition example via the registry:
 
 ```bash
 npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller-demo.json
+```
+
+Or the skin alone:
+
+```bash
+npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller.json
 ```
 
 ## Anatomy
@@ -50,12 +56,16 @@ function ChatIngress() {
 }
 ```
 
+## Registry skin
+
+`Frame` / `Status` / `Log` / `Clear` are styled-only helpers. Root and Handler still render no DOM — the skin reads `useStatus` / `useController` and owns `data-slot` visuals.
+
 ## Live demo
 
 <DataStreamControllerDemo />
 
 ## Out of scope
 
-Common artifact deltas (`data-id`, `data-title`, `data-kind`, `data-clear`, `data-finish`) are treated like every other part. A future **ArtifactSession** adapter owns applying that protocol — not this controller.
+Common artifact deltas (`data-id`, `data-title`, `data-kind`, `data-clear`, `data-finish`) are treated like every other part. **[ArtifactSession](/docs/artifact-session)** owns applying that protocol.
 
 Frozen contract: [`INTERFACE.md`](https://github.com/nolly-studio/ai-sdk-agents/blob/main/packages/react/src/data-stream-controller/INTERFACE.md) in the repo.

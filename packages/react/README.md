@@ -14,10 +14,11 @@ Published. Primitives: **DataStreamController**, **ArtifactSession** (frozen v1)
 pnpm add @aisdkagents/react
 ```
 
-Composition example via shadcn registry (depends on this package):
+Styled skins + composition examples via shadcn registry (depend on this package):
 
 ```bash
 npx shadcn@latest add https://<your-deployed-host>/r/data-stream-controller-demo.json
+npx shadcn@latest add https://<your-deployed-host>/r/artifact-session-demo.json
 ```
 
 ## Primitives

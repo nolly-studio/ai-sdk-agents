@@ -1,0 +1,80 @@
+---
+title: ArtifactSession
+description: Headless single-kind artifact document session — envelope + content snapshot over DataStreamController.
+icon: FileText
+---
+
+Behavior package: [`@aisdkagents/react`](https://www.npmjs.com/package/@aisdkagents/react).
+
+## Install
+
+```bash
+pnpm add @aisdkagents/react
+```
+
+Styled panel + composition example via the registry:
+
+```bash
+npx shadcn@latest add https://<your-deployed-host>/r/artifact-session-demo.json
+```
+
+Or the skin alone:
+
+```bash
+npx shadcn@latest add https://<your-deployed-host>/r/artifact-session.json
+```
+
+## Anatomy
+
+1. **`createArtifactSession({ adapter })`** — bind one kind; returns `Root` / `Stream` / hooks.
+2. **Root** — provider + store lifetime (no DOM).
+3. **Stream** — mounts `DataStreamController.Handler` and applies parts via `applyPart`.
+4. **useSnapshot / useSelector** — read document state (`Object.is` selectors).
+5. **useController** — `applyPart` / `setContent` / `reset`.
+
+Compose under **both** `DataStreamController.Root` and the session `Root`. Exactly one Handler (or `Stream`) per DSC Root.
+
+## Quick start
+
+```tsx
+import {
+  createArtifactSession,
+  DataStreamController,
+} from "@aisdkagents/react";
+
+const TextArtifactSession = createArtifactSession({
+  adapter: {
+    kind: "text",
+    initialContent: () => "",
+    clear: () => "",
+    reducePart: ({ part, state }) => {
+      if (part.type !== "data-textDelta") return null;
+      return `${state.content}${part.data}`;
+    },
+  },
+});
+
+function App() {
+  return (
+    <DataStreamController.Root>
+      <TextArtifactSession.Root>
+        <TextArtifactSession.Stream />
+        <ChatIngress />
+        <Panel />
+      </TextArtifactSession.Root>
+    </DataStreamController.Root>
+  );
+}
+```
+
+## Registry skin
+
+`createArtifactSessionSkin(session)` binds panel chrome (`Panel`, `Title`, `Content`, `PhaseBadge`, …) to one session namespace. Behavior stays in the npm package; the skin owns `data-slot` / `data-stream-phase` visuals only.
+
+## Live demo
+
+<ArtifactSessionDemo />
+
+## Out of scope
+
+Visibility, versions, metadata, multi-kind switching, and controlled field props. Frozen contract: [`INTERFACE.md`](https://github.com/nolly-studio/ai-sdk-agents/blob/main/packages/react/src/artifact-session/INTERFACE.md) in the repo.

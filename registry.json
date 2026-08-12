@@ -4,20 +4,72 @@
   "homepage": "https://github.com/nolly-studio/ai-sdk-agents",
   "items": [
     {
-      "name": "data-stream-controller-demo",
-      "type": "registry:component",
-      "title": "DataStreamController Demo",
-      "description": "Composition example for the headless DataStreamController from @aisdkagents/react. Root + Handler + useAppend + onPart sink.",
+      "name": "data-stream-controller",
+      "type": "registry:ui",
+      "title": "DataStreamController",
+      "description": "Styled adapter for the headless DataStreamController from @aisdkagents/react. Frame, status, log chrome — behavior stays in the npm package.",
       "dependencies": ["@aisdkagents/react"],
       "registryDependencies": ["button"],
       "files": [
         {
-          "path": "apps/web/registry/demos/data-stream-controller-demo.tsx",
-          "type": "registry:component",
-          "target": "@components/ai-sdk-agents/data-stream-controller-demo.tsx"
+          "path": "apps/web/registry/ui/data-stream-controller.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/data-stream-controller.tsx"
         }
       ],
-      "docs": "Installs a composition example. Behavior lives in @aisdkagents/react (npm). ArtifactSession / common artifact deltas are out of scope for this controller."
+      "docs": "Installs the styled skin. Root/Handler/hooks live in @aisdkagents/react."
+    },
+    {
+      "name": "artifact-session",
+      "type": "registry:ui",
+      "title": "ArtifactSession",
+      "description": "Styled panel adapter for createArtifactSession from @aisdkagents/react. Bind chrome with createArtifactSessionSkin(session).",
+      "dependencies": ["@aisdkagents/react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "apps/web/registry/ui/artifact-session.tsx",
+          "type": "registry:ui",
+          "target": "components/ui/artifact-session.tsx"
+        }
+      ],
+      "docs": "Installs the styled panel skin. Document reduce stays in @aisdkagents/react."
+    },
+    {
+      "name": "data-stream-controller-demo",
+      "type": "registry:component",
+      "title": "DataStreamController Demo",
+      "description": "Composition example: DataStreamController + registry skin (Frame / Status / Log).",
+      "dependencies": ["@aisdkagents/react"],
+      "registryDependencies": ["button", "data-stream-controller"],
+      "files": [
+        {
+          "path": "apps/web/registry/demos/data-stream-controller-demo.tsx",
+          "type": "registry:component",
+          "target": "components/ai-sdk-agents/data-stream-controller-demo.tsx"
+        }
+      ],
+      "docs": "Installs a composition example. Behavior lives in @aisdkagents/react (npm)."
+    },
+    {
+      "name": "artifact-session-demo",
+      "type": "registry:component",
+      "title": "ArtifactSession Demo",
+      "description": "Composition example: DataStreamController transport + ArtifactSession document store + panel skin.",
+      "dependencies": ["@aisdkagents/react"],
+      "registryDependencies": [
+        "button",
+        "data-stream-controller",
+        "artifact-session"
+      ],
+      "files": [
+        {
+          "path": "apps/web/registry/demos/artifact-session-demo.tsx",
+          "type": "registry:component",
+          "target": "components/ai-sdk-agents/artifact-session-demo.tsx"
+        }
+      ],
+      "docs": "Installs a composition example. Behavior lives in @aisdkagents/react (npm)."
     }
   ]
 }
