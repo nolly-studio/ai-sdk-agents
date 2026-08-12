@@ -5,16 +5,14 @@
     "build": {
       "dependsOn": ["^build"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
-    },
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
-    "format": {
-      "dependsOn": ["^format"]
+      "outputs": ["dist/**", ".next/**", "!.next/cache/**", "public/r/**"]
     },
     "typecheck": {
       "dependsOn": ["^typecheck"]
+    },
+    "test": {},
+    "verify:publish": {
+      "dependsOn": ["build"]
     },
     "dev": {
       "cache": false,

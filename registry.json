@@ -1,0 +1,23 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "ai-sdk-agents",
+  "homepage": "https://github.com/nolly-studio/ai-sdk-agents",
+  "items": [
+    {
+      "name": "data-stream-controller-demo",
+      "type": "registry:component",
+      "title": "DataStreamController Demo",
+      "description": "Composition example for the headless DataStreamController from @ai-sdk-agents/react. Root + Handler + useAppend + onPart sink.",
+      "dependencies": ["@ai-sdk-agents/react"],
+      "registryDependencies": ["button"],
+      "files": [
+        {
+          "path": "registry/data-stream-controller-demo/data-stream-controller-demo.tsx",
+          "type": "registry:component",
+          "target": "@components/ai-sdk-agents/data-stream-controller-demo.tsx"
+        }
+      ],
+      "docs": "Installs a composition example. Behavior lives in @ai-sdk-agents/react (npm). Keep private: true / unpublished until M6 is approved. ArtifactSession / common artifact deltas are out of scope for this controller."
+    }
+  ]
+}
