@@ -40,20 +40,21 @@ import type { ConnectorAuthStatus } from "./use-connector-auth";
 import { useConnectorAuth } from "./use-connector-auth";
 import { usePromptStream } from "./use-prompt-stream";
 
-function wait(ms: number, signal: AbortSignal): Promise<undefined> {
-  const { promise, resolve, reject } = Promise.withResolvers<undefined>();
-  const timer = window.setTimeout(() => {
-    resolve();
-  }, ms);
-  signal.addEventListener(
-    "abort",
-    () => {
-      window.clearTimeout(timer);
-      reject(new DOMException("Aborted", "AbortError"));
-    },
-    { once: true }
-  );
-  return promise;
+function wait(ms: number, signal: AbortSignal): Promise<void> {
+  // Demo delay — Promise executor is the portable API under tsconfig lib es2022
+  // (Promise.withResolvers needs es2024+ typings).
+  // oxlint-disable-next-line promise/avoid-new
+  return new Promise((resolve, reject) => {
+    const timer = window.setTimeout(resolve, ms);
+    signal.addEventListener(
+      "abort",
+      () => {
+        window.clearTimeout(timer);
+        reject(new DOMException("Aborted", "AbortError"));
+      },
+      { once: true }
+    );
+  });
 }
 
 function sourceAction(

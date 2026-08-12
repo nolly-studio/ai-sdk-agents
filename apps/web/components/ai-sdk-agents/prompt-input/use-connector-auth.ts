@@ -11,12 +11,13 @@ export type UseConnectorAuthOptions = {
   defaultConnected?: readonly string[];
 };
 
-function wait(ms: number): Promise<undefined> {
-  const { promise, resolve } = Promise.withResolvers<undefined>();
-  window.setTimeout(() => {
-    resolve();
-  }, ms);
-  return promise;
+function wait(ms: number): Promise<void> {
+  // Demo delay — Promise executor is the portable API under tsconfig lib es2022
+  // (Promise.withResolvers needs es2024+ typings).
+  // oxlint-disable-next-line promise/avoid-new
+  return new Promise((resolve) => {
+    window.setTimeout(resolve, ms);
+  });
 }
 
 /**
