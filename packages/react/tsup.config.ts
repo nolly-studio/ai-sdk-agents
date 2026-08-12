@@ -10,7 +10,11 @@ export default defineConfig({
   format: ["esm"],
   dts: true,
   clean: true,
-  splitting: false,
+  // Shared React contexts (e.g. DataStreamControllerContext) must be a single
+  // module instance across subpath entries. With splitting: false, each entry
+  // inlines its own createContext — Root from ./data-stream-controller and
+  // Stream from ./artifact-session then fail the "within Root" guard.
+  splitting: true,
   treeshake: true,
   target: "es2022",
   outDir: "dist",
