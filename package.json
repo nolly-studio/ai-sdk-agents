@@ -13,7 +13,7 @@
     "fix": "ultracite fix",
     "typecheck": "turbo typecheck",
     "test": "turbo test",
-    "verify:publish": "turbo verify:publish",
+    "verify:publish": "turbo verify:publish --filter=./packages/*",
     "registry:build": "pnpm dlx shadcn@latest build --output apps/web/public/r",
     "changeset": "changeset",
     "version-packages": "changeset version",

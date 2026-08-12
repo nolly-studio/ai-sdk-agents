@@ -193,8 +193,19 @@ function verifyCleanConsumer() {
       cwd: packageRoot,
       encoding: "utf-8",
     });
-    const [{ filename }] = JSON.parse(packOutput);
-    const tarball = path.join(packageRoot, filename);
+    // npm 10 returns an array; some npm 11+ builds return a single object.
+    // Also strip any non-JSON noise that may precede the payload.
+    const starts = [packOutput.indexOf("["), packOutput.indexOf("{")].filter(
+      (index) => index !== -1
+    );
+    assert(starts.length > 0, "npm pack --json produced no JSON payload");
+    const parsed = JSON.parse(packOutput.slice(Math.min(...starts)));
+    const packMeta = Array.isArray(parsed) ? parsed[0] : parsed;
+    assert(
+      typeof packMeta?.filename === "string" && packMeta.filename.length > 0,
+      "npm pack --json missing filename"
+    );
+    const tarball = path.join(packageRoot, packMeta.filename);
 
     writeFileSync(
       path.join(consumerDir, "package.json"),
