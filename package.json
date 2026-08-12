@@ -15,9 +15,14 @@
     "test": "turbo test",
     "verify:publish": "turbo verify:publish",
     "registry:build": "pnpm dlx shadcn@latest build --output apps/web/public/r",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "pnpm build:packages && pnpm verify:publish && changeset publish",
     "prepare": "husky"
   },
   "devDependencies": {
+    "@changesets/changelog-github": "^1.0.0",
+    "@changesets/cli": "^3.0.0",
     "@workspace/typescript-config": "workspace:*",
     "husky": "^9.1.7",
     "oxfmt": "^0.63.0",

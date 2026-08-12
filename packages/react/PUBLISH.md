@@ -43,4 +43,11 @@ Note: npm org `ai-sdk-agents` is unavailable (unscoped package name taken). Scop
 
 ## Later releases
 
-Bump version intentionally, then publish again. Prefer Changesets once multiple `@aisdkagents/*` packages exist.
+Prefer the Changesets + GitHub Actions path in [RELEASING.md](../../RELEASING.md) (Trusted Publisher / OIDC via `release.yml`).
+
+Manual escape hatch (after login as `aisdkagents`):
+
+```bash
+# bump version in package.json, then:
+pnpm --filter @aisdkagents/react publish --access public
+```

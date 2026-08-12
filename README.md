@@ -95,8 +95,11 @@ Frozen v1 contract: `packages/react/src/data-stream-controller/INTERFACE.md`.
 
 Docs: [/docs/data-stream-controller](./apps/web/app/docs/data-stream-controller)
 
+## Releasing
+
+See [RELEASING.md](./RELEASING.md) (Changesets + `.github/workflows/release.yml` + npm Trusted Publisher).
+
 ## Out of scope
 
 - Private catalog Pattern migration
 - ArtifactSession / DocumentVersionController / HITL controllers (future)
-- `npm publish` without human M6 approval
