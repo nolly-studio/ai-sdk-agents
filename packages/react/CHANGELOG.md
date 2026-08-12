@@ -1,5 +1,11 @@
 # @aisdkagents/react
 
+## 0.2.0
+
+### Minor Changes
+
+- [`272b5e8`](https://github.com/nolly-studio/ai-sdk-agents/commit/272b5e8f4428ad554d4ff2e528b21d37949d61a3) Thanks [@nolly-studio](https://github.com/nolly-studio)! - Add ArtifactSession and PromptInput headless primitives, plus public subpath exports.
+
 ## 0.1.0
 
 ### Initial public release
